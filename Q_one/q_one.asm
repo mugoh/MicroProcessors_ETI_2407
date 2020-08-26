@@ -15,10 +15,16 @@ include "emu8086.inc"
         ; Stored in CX
         call scan_num
 
+        ; Print column header to stdout
+        mov AH, 9
+        mov DX, offset col_header
+        int 21h
+
         mov number, CX
         
         print_and_mul:
             call @print_new_line
+
 
             ; Multiple the number (X * X)
             call muliply_
@@ -77,6 +83,7 @@ muliply_ endp
 
 .data
     msg_prompt db "Enter max value: $", 0xa, 0xd
+    col_header db 0xa, 0xd, 0xa, 0xd, "x      x**2", "$"
     number dw ?
     count dw 1
 
