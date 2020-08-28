@@ -131,7 +131,8 @@ terminate:
 
 .data
     prompt db "Yo! Start typing  [Press Control+C to terminate]", 0xa, 0xd, 0xa, 0xd, "$"
-    prompt_term db 0xa, 0xd, 0xa, 0xd, 09, "** Process terminated by user. Bye dude/dudelady **" , 0xa, 0xd, "$"
+    prompt_term db 0xa, 0xd, 0xa, 0xd, 09,
+        "** Process terminated by user. Bye dude/dudelady **" , 0xa, 0xd, "$"
     char db ?
     upper_b db ?
     lower_b db ?
