@@ -167,7 +167,8 @@ illegal_dec:
         cmp BX, dec_input
         je print_answ
 
-        jmp dec_step ; skip the cmp character part since we are doing DEC to ASCII
+        jmp dec_step ; skip the cmp character part since we are doing
+                     ; DEC to ASCII
 
         cmp_character:
             cmp CL, ascii_input

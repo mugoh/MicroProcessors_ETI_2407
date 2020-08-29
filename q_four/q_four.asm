@@ -1,8 +1,9 @@
 ; TEXT STARTS HERE
+
 ; What does the sketch do? What it's output?
 
-; Too Long. Didn't Read: The sketch divides 200 by 5 and prints the result to stdout
-;                         in binary form
+; Short answer: The sketch divides 200 by 5 and prints the result to stdout
+;               in binary form
 
 ; For detailed explanation, See Comments added in the sketch
 

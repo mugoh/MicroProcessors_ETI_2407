@@ -4,6 +4,46 @@
 \usepackage{listings}
 \usepackage{graphicx}
 
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
 
 
 
@@ -50,15 +90,15 @@ representation, the maximum would be:
 \end{equation*}
 
 
-For a $32 bit$ answer, the result is placed in DX:AX or effectively, if using a single 32 bit register, EAX.
-This program does compute the answer upto a max of 65,556 therefore,
+For a $32 \ bit$ answer, the result is placed in DX:AX or effectively, if using a single 32 bit register, EAX.
+This program does compute the answer upto a max of $65,556$ therefore,
 but since we are only printing from AX (using \textbf{emu8086 print\_num} procedure), and haven't manually implemented
 printing from DX:AX, the maximum result we get is similar to that of a signed value.
 
 
 \subparagraph{What can be done to improve the limit?}
 Print the entire result from EAX for a $2^{16}$ value. Beyond that, we can't go as the addresses
-only access $64 KB$ of addressable memory
+only access $64 \ KB$ of addressable memory
 
 \subsection{Pseudo-code}
 \begin{enumerate}
@@ -73,7 +113,9 @@ only access $64 KB$ of addressable memory
 \end{enumerate}
 
 \subsection{Code} \label{script 1}
-\lstinputlisting[language=python]{Q_one/q_one.asm}
+\begin{flushleft}
+	\lstinputlisting[language=python]{Q_one/q_one.asm}
+\end{flushleft}
 
 \clearpage
 \subsection{Program Output}
@@ -81,7 +123,8 @@ only access $64 KB$ of addressable memory
 \begin{figure}[h]
 	\includegraphics[width=15cm]{Q_one/q1_updated_aug26.png}
 	\centering
-	\caption{A screenshot of the output from running script \ref{script 1}}
+	\caption{A screenshot of the output from running script \ref{script 1}
+	}
 \end{figure}
 
 
@@ -127,8 +170,8 @@ E.g. entering a number above $255$.
 	
 	\item \textbf{Start loop:}
 	\begin{itemize}
-	\item If $input$ == $ASCII_{i}$, (where $ASCII$ is the set of all ASCII characters) \\
-	\hspace*{6em} print $ASCII_i$, print $DEC_i$, (where $DEC$ is an enumeration of the $ASCII$ set) \\
+	\item \textbf{If $input$ is equal} to $ASCII\{c\}$, (where $ASCII$ is the set of all ASCII characters $[0: 255]$) \\
+	\hspace*{6em} print $ASCII\{c\}$, print $DEC\{d\}$, (where $DEC$ is an \hspace*{6em} enumeration of the $ASCII$ set $[0_d: 255_d]$) \\
 	\textbf{end loop}
 	
 	\end{itemize}
@@ -144,20 +187,20 @@ E.g. entering a number above $255$.
 \begin{figure}[h]
 	\includegraphics[width=12cm]{q_two/q2_ascii_to_dec.png}
 	\centering
-	\caption{A screenshot of the output from running script \ref{script 1}. \textbf{Converting ASCII to decimal}}
+	\caption{A screenshot of the output from running script \ref{sketch 2}. \textbf{Converting ASCII to decimal}}
 \end{figure}
 
 \begin{figure}[h]
 	\includegraphics[width=12cm]{q_two/q2_dec_to_ascii.png}
 	\centering
-	\caption{A screenshot of the output from running script \ref{script 1}. \textbf{Converting decimal to ASCII}}
+	\caption{A screenshot of the output from running script \ref{sketch 2}. \textbf{Converting decimal to ASCII}}
 \end{figure}
 
 
 \begin{figure}[h]
 	\includegraphics[width=12cm]{q_two/q2_input_gthan_255.png}
 	\centering
-	\caption{A screenshot of the output from running script \ref{script 1}. \textbf{Error on Decimal value greater that $255$}}
+	\caption{A screenshot of the output from running script \ref{sketch 2}. \textbf{Error on Decimal value greater that $255$}}
 \end{figure}
 
 \clearpage
@@ -193,7 +236,7 @@ After writing your code, describe what would happen if a user typed
 
 
 \begin{figure}[h]
-	\includegraphics[width=12cm]{q_three/q_3 print 123456789?.png}
+	\includegraphics[width=12cm]{q_three/"q_3 print 123456789?".png}
 	\centering
 	\caption{A screenshot of the output from running script \ref{sketch 3}. \textbf{An input of "1234?" outputs "1234?"}}
 	\label{fig:5}
@@ -201,17 +244,53 @@ After writing your code, describe what would happen if a user typed
 
 
 \begin{figure}[h]
-	\includegraphics[width=12cm]{q_three/q_3_printing_I'm a noisy machine.png}
+	\includegraphics[width=12cm]{q_three/"q_3_printing_I'm a noisy machine".png}
 	\centering
-	\caption{A screenshot of the output from running script \ref{sketch 3}. \textbf{The output of the input "I'm a noisy machine"}}
+	\caption{A screenshot of the output from running script \ref{sketch 3}. \textbf{The output of the input \emph{"I'm a noisy machine"}}}
 \end{figure}
 
 
 \begin{figure}[h]
 	\includegraphics[width=12cm]{q_three/Q3_printing_make_me_cry!!!.png}
 	\centering
-	\caption{A screenshot of the output from running script \ref{sketch 3}. \textbf{The output of the input "make me cry!!!"}}
+	\caption{A screenshot of the output from running script \ref{sketch 3}. \textbf{The output of the input \emph{"make me cry!!!"}}}
 \end{figure}
+
+\clearpage
+\section{Question Four}
+Explain the following code and what it does. What output does it produce?
+
+\begin{lstlisting}[language={[x86masm]Assembler}]
+start:
+	mov AL, 200
+	mov CX, 1
+	mov BL,5
+	div BL
+	mov BL,AL
+	shl CX,3
+somewhere:
+	mov AH, 2
+	mov DL, 30h
+	test BL, 10000000b
+	jz elsewhere
+	mov DL, 31h
+elsewhere:
+	int 21h
+	shl BL, 1
+	loop somewhere
+\end{lstlisting}
+
+\subsection{Answer Explanation}
+\emph{Short Answer:}
+
+This sketch \textbf{performs division} on two digits and \textbf{prints the result} to stdout. The exact details are mentioned as comments in sketch \ref{sketch 4}
+
+\subsection{Code explanation} \label{sketch 4}
+\lstset{
+	showstringspaces=false
+}
+
+\lstinputlisting[language=python]{q_four/q_four.asm}
 
 \end{document}
 
